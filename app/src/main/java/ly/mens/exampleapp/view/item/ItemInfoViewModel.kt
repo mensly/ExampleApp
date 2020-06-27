@@ -5,6 +5,6 @@ import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.ViewModel
 import ly.mens.exampleapp.model.Item
 
-class ItemInfoViewModel @ViewModelInject constructor(): ViewModel() {
+class ItemInfoViewModel @ViewModelInject constructor() : ViewModel() {
     val item = ObservableField<Item>()
 }

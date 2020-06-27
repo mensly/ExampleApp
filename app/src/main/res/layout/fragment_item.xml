@@ -5,11 +5,11 @@
         <variable name="vm" type="ly.mens.exampleapp.view.item.ItemInfoViewModel" />
     </data>
     <TextView
-        android:id="@+id/description"
+        android:id="@+id/body"
         style="@style/TextAppearance.AppCompat.Body1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@{vm.item.description}"
+        android:text="@{vm.item.body}"
         android:padding="@dimen/padding_default"
         app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 </layout>

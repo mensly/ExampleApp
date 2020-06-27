@@ -11,7 +11,7 @@ import ly.mens.exampleapp.R
 import ly.mens.exampleapp.databinding.FragmentListBinding
 
 @AndroidEntryPoint
-class ItemListFragment: Fragment() {
+class ItemListFragment : Fragment() {
     private val itemListViewModel: ItemListViewModel by viewModels()
     override fun onCreateView(
         inflater: LayoutInflater,

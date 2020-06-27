@@ -1,11 +1,9 @@
 package ly.mens.exampleapp.view.list
 
-import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.Keep
-import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.cell_item.view.*
 import ly.mens.exampleapp.R
@@ -16,15 +14,16 @@ import ly.mens.exampleapp.view.item.ItemInfoFragment
 import kotlin.properties.Delegates
 
 @Keep
-class ItemListAdapter: AbstractListAdapter<Item, ItemListAdapter.ViewHolder>() {
+class ItemListAdapter : AbstractListAdapter<Item, ItemListAdapter.ViewHolder>() {
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        var item by Delegates.observable<Item?>(null) { _,_,newItem ->
+        var item by Delegates.observable<Item?>(null) { _, _, newItem ->
             if (newItem == null) {
                 itemView.visibility = View.INVISIBLE
                 return@observable
             }
-            itemView.text.text = newItem.name
+            itemView.text.text = newItem.title
         }
+
         init {
             itemView.setOnClickListener {
                 val item = this.item ?: return@setOnClickListener
@@ -38,8 +37,8 @@ class ItemListAdapter: AbstractListAdapter<Item, ItemListAdapter.ViewHolder>() {
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int)
-            = ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.cell_item, parent, false))
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
+        ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.cell_item, parent, false))
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.item = items[position]

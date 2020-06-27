@@ -15,7 +15,7 @@ import ly.mens.exampleapp.services.ItemRepository
 class ItemListViewModel @ViewModelInject constructor(
     private val repository: ItemRepository,
     @Assisted private val savedStateHandle: SavedStateHandle
-): ViewModel() {
+) : ViewModel() {
     private var _items: MutableLiveData<List<Item>>? = null
     val items: LiveData<List<Item>>
         get() {

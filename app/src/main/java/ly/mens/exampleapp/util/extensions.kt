@@ -11,7 +11,7 @@ fun Context.appCompatActivity(): AppCompatActivity? {
     while (--maxDepth > 0 && curContext !is AppCompatActivity) {
         curContext = (curContext as ContextWrapper).baseContext
     }
-    return if(curContext is AppCompatActivity)
+    return if (curContext is AppCompatActivity)
         curContext
     else
         null

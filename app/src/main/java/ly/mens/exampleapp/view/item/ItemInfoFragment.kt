@@ -7,20 +7,18 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import dagger.hilt.android.AndroidEntryPoint
-import ly.mens.exampleapp.R
 import ly.mens.exampleapp.databinding.FragmentItemBinding
-import ly.mens.exampleapp.databinding.FragmentListBinding
 import ly.mens.exampleapp.model.Item
-import ly.mens.exampleapp.view.list.ItemListViewModel
 
 @AndroidEntryPoint
-class ItemInfoFragment: Fragment() {
+class ItemInfoFragment : Fragment() {
     companion object {
         const val ARG_ITEM = "item"
         fun createArguments(item: Item) = Bundle().apply {
             putParcelable(ARG_ITEM, item)
         }
     }
+
     private val itemInfoViewModel: ItemInfoViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -40,6 +38,6 @@ class ItemInfoFragment: Fragment() {
 
     override fun onResume() {
         super.onResume()
-        activity?.title = itemInfoViewModel.item.get()?.name
+        activity?.title = itemInfoViewModel.item.get()?.title
     }
 }
