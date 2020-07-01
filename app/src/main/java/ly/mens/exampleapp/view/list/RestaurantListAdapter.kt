@@ -1,5 +1,6 @@
 package ly.mens.exampleapp.view.list
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -20,6 +21,7 @@ class RestaurantListAdapter : AbstractListAdapter<Restaurant, RestaurantListAdap
             }
             itemView.visibility = View.VISIBLE
             binding.restaurant = newItem
+            Log.d("Foobar", newItem.featuredImage ?: "No image")
         }
     }
 

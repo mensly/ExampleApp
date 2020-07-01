@@ -25,6 +25,6 @@ class RestaurantListFragment : Fragment() {
 
     override fun onResume() {
         super.onResume()
-        activity?.title = resources.getString(R.string.app_name)
+        activity?.title = resources.getString(R.string.list_title)
     }
 }

@@ -11,7 +11,7 @@ class ApiKeyInterceptor: Interceptor {
     }
     val host = Uri.parse(BuildConfig.BASE_URL).host
     override fun intercept(chain: Interceptor.Chain): Response {
-        return if (chain.request().url().host() == host) {
+        return if (chain.request().url.host == host) {
             chain.proceed(
                 chain.request().newBuilder().addHeader(HEADER_API_KEY, BuildConfig.API_KEY).build()
             )

@@ -7,4 +7,13 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="AppTheme.List.Name" parent="TextAppearance.AppCompat.Title">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="AppTheme.List.Address" parent="TextAppearance.AppCompat.Subhead">
+        <item name="android:textSize">12sp</item> <!-- Size 10 as requested breaks accessibility requirements -->
+    </style>
+
 </resources>
