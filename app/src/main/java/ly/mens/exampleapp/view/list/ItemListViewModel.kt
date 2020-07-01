@@ -2,11 +2,7 @@ package ly.mens.exampleapp.view.list
 
 import androidx.hilt.Assisted
 import androidx.hilt.lifecycle.ViewModelInject
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.SavedStateHandle
-import androidx.lifecycle.ViewModel
-import kotlinx.coroutines.GlobalScope
+import androidx.lifecycle.*
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import ly.mens.exampleapp.model.Item
@@ -21,7 +17,7 @@ class ItemListViewModel @ViewModelInject constructor(
         get() {
             if (_items == null) {
                 _items = MutableLiveData()
-                GlobalScope.launch {
+                viewModelScope.launch {
                     repository.getItems().collect { _items!!.postValue(it) }
                 }
             }
