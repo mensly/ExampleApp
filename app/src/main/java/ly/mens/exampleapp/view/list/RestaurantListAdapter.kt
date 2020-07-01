@@ -21,7 +21,6 @@ class RestaurantListAdapter : AbstractListAdapter<Restaurant, RestaurantListAdap
             }
             itemView.visibility = View.VISIBLE
             binding.restaurant = newItem
-            Log.d("Foobar", newItem.featuredImage ?: "No image")
         }
     }
 

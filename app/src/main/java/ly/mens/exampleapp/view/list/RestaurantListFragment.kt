@@ -9,10 +9,13 @@ import androidx.fragment.app.viewModels
 import dagger.hilt.android.AndroidEntryPoint
 import ly.mens.exampleapp.R
 import ly.mens.exampleapp.databinding.FragmentListBinding
+import ly.mens.exampleapp.services.FavouritesManager
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class RestaurantListFragment : Fragment() {
     private val restaurantListViewModel: RestaurantListViewModel by viewModels()
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,

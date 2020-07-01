@@ -11,6 +11,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        // TODO: Add favourites list
         configureActionBar()
         if (savedInstanceState == null) {
             supportFragmentManager.beginTransaction()
