@@ -27,4 +27,6 @@ class RestaurantListFragment : Fragment() {
         super.onResume()
         activity?.title = resources.getString(R.string.list_title)
     }
+
+    // TODO: Implement parallax effect on images
 }

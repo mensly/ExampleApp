@@ -1,7 +1,7 @@
 package ly.mens.exampleapp.di
 
 import android.content.Context
-import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
+import androidx.preference.PreferenceManager
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import com.squareup.picasso.OkHttp3Downloader
@@ -13,39 +13,25 @@ import dagger.hilt.android.components.ApplicationComponent
 import dagger.hilt.android.qualifiers.ApplicationContext
 import ly.mens.exampleapp.BuildConfig
 import ly.mens.exampleapp.services.ApiKeyInterceptor
-import ly.mens.exampleapp.services.RestaurantRepository
-import ly.mens.exampleapp.services.ZomatoApi
+import okhttp3.Cache
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
-import retrofit2.Retrofit
-import retrofit2.converter.moshi.MoshiConverterFactory
-import retrofit2.create
 import javax.inject.Singleton
+
 
 @Module
 @InstallIn(ApplicationComponent::class)
-object ItemModule {
+object FoundationModule {
     @Provides
     @Singleton
-    fun provideItemRepository(zomatoApi: ZomatoApi) = RestaurantRepository(zomatoApi)
-
-    @Provides
-    @Singleton
-    fun provideSampleApi(okHttpClient: OkHttpClient, moshi: Moshi) = Retrofit.Builder()
-        .baseUrl(BuildConfig.BASE_URL)
-        .client(okHttpClient)
-        .addCallAdapterFactory(CoroutineCallAdapterFactory())
-        .addConverterFactory(MoshiConverterFactory.create(moshi))
-        .build()
-        .create<ZomatoApi>()
-
-    @Provides
-    @Singleton
-    fun provideOkHttpClient() = OkHttpClient.Builder()
+    fun provideOkHttpClient(@ApplicationContext applicationContext: Context) = OkHttpClient.Builder()
         .addInterceptor(ApiKeyInterceptor())
+        .cache(Cache(applicationContext.cacheDir, 100 * 1024 * 1024))
         .apply {
             if (BuildConfig.DEBUG) {
-                addInterceptor(HttpLoggingInterceptor().apply { level = HttpLoggingInterceptor.Level.BODY })
+                addInterceptor(HttpLoggingInterceptor().apply {
+                    level = HttpLoggingInterceptor.Level.BODY
+                })
             }
         }
         .build()
@@ -64,4 +50,8 @@ object ItemModule {
     fun provideMoshi() = Moshi.Builder()
         .add(KotlinJsonAdapterFactory())
         .build()
+
+    @Provides
+    fun provideSharedPreferences(@ApplicationContext applicationContext: Context) =
+        PreferenceManager.getDefaultSharedPreferences(applicationContext)
 }
