@@ -15,6 +15,7 @@ import javax.inject.Inject
 @AndroidEntryPoint
 class RestaurantListFragment : Fragment() {
     private val restaurantListViewModel: RestaurantListViewModel by viewModels()
+    @Inject private lateinit var favouritesManager: FavouritesManager
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -23,6 +24,7 @@ class RestaurantListFragment : Fragment() {
     ): View? {
         return FragmentListBinding.inflate(layoutInflater).apply {
             vm = restaurantListViewModel
+            (list.adapter as? RestaurantListAdapter)?.favouritesManager = favouritesManager
         }.root
     }
 

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout>
     <data>
-        <variable name="restaurant" type="ly.mens.exampleapp.model.Restaurant" />
+        <variable name="vm" type="ly.mens.exampleapp.view.list.RestaurantItemViewModel" />
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
@@ -14,7 +14,7 @@
             android:layout_height="200dp"
             android:importantForAccessibility="no"
             android:scaleType="centerCrop"
-            app:image_url="@{restaurant.featuredImage}"
+            app:image_url="@{vm.restaurant.featuredImage}"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"/>
         <View
@@ -33,7 +33,7 @@
             android:paddingEnd="@dimen/padding_default"
             android:paddingBottom="@dimen/padding_small"
             android:background="?android:attr/selectableItemBackground"
-            android:text="@{restaurant.name}"
+            android:text="@{vm.restaurant.name}"
             app:layout_constraintBottom_toTopOf="@+id/address"/>
         <TextView
             style="@style/TextAppearance.AppCompat.Subhead"
@@ -45,8 +45,14 @@
             android:paddingEnd="@dimen/padding_default"
             android:paddingBottom="@dimen/padding_default"
             android:background="?android:attr/selectableItemBackground"
-            android:text="@{restaurant.location.address}"
+            android:text="@{vm.restaurant.location.address}"
             app:layout_constraintBottom_toBottomOf="parent"/>
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="@={vm.isFavourite}"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
