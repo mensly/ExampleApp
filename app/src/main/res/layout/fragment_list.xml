@@ -2,7 +2,7 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <data>
-        <variable name="vm" type="ly.mens.exampleapp.view.list.ItemListViewModel" />
+        <variable name="vm" type="ly.mens.exampleapp.view.list.RestaurantListViewModel" />
     </data>
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/list"
@@ -10,7 +10,7 @@
         android:layout_height="0dp"
         android:orientation="vertical"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        app:adapterClass="@{`ly.mens.exampleapp.view.list.ItemListAdapter`}"
+        app:adapterClass="@{`ly.mens.exampleapp.view.list.RestaurantListAdapter`}"
         app:items="@{vm.items}"
         app:layout_constraintTop_toBottomOf="@+id/toolbar"
         app:layout_constraintBottom_toBottomOf="parent" />

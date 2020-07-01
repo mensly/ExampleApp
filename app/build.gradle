@@ -5,9 +5,15 @@ apply plugin: 'kotlin-kapt'
 apply plugin: 'dagger.hilt.android.plugin'
 
 def STRING = "String"
+def INTEGER = "int"
+def DOUBLE = "double"
 def QUOTE = { x -> "\"$x\"" }
 
 def BASE_URL = "BASE_URL"
+def API_KEY = "API_KEY"
+def SUBZONE_ID_ABBOTSFORD = "SUBZONE_ID_ABBOTSFORD"
+def LATITUDE = "LATITUDE"
+def LONGITUDE = "LONGITUDE"
 
 android {
     compileSdkVersion 29
@@ -19,13 +25,13 @@ android {
         versionCode 1
         versionName "1.0"
 
-        buildConfigField STRING, BASE_URL, QUOTE("https://jsonplaceholder.typicode.com")
+        buildConfigField STRING, BASE_URL, QUOTE("https://developers.zomato.com/api/v2.1/")
+        buildConfigField STRING, API_KEY, QUOTE("6b7f979e6988103706c570e45e629e2a")
+        buildConfigField DOUBLE, LATITUDE, "-37.803"
+        buildConfigField DOUBLE, LONGITUDE, "145.002"
+        buildConfigField INTEGER, SUBZONE_ID_ABBOTSFORD, "98284"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-    }
-
-    androidExtensions {
-        features += ["parcelize"]
     }
 
     buildFeatures {

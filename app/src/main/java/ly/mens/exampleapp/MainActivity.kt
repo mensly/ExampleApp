@@ -4,7 +4,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_main.*
-import ly.mens.exampleapp.view.list.ItemListFragment
+import ly.mens.exampleapp.view.list.RestaurantListFragment
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
@@ -14,7 +14,7 @@ class MainActivity : AppCompatActivity() {
         configureActionBar()
         if (savedInstanceState == null) {
             supportFragmentManager.beginTransaction()
-                .add(R.id.content, ItemListFragment())
+                .add(R.id.content, RestaurantListFragment())
                 .commit()
         }
     }

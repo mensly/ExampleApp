@@ -11,15 +11,15 @@ import ly.mens.exampleapp.R
 import ly.mens.exampleapp.databinding.FragmentListBinding
 
 @AndroidEntryPoint
-class ItemListFragment : Fragment() {
-    private val itemListViewModel: ItemListViewModel by viewModels()
+class RestaurantListFragment : Fragment() {
+    private val restaurantListViewModel: RestaurantListViewModel by viewModels()
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         return FragmentListBinding.inflate(layoutInflater).apply {
-            vm = itemListViewModel
+            vm = restaurantListViewModel
         }.root
     }
 
