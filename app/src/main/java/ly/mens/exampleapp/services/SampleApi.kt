@@ -6,5 +6,5 @@ import retrofit2.http.GET
 
 interface SampleApi {
     @GET("posts")
-    fun listPosts(): Deferred<List<Item>>
+    fun listPostsAsync(): Deferred<List<Item>>
 }
